@@ -13,7 +13,7 @@ void printHB (int numhit, int numbrrow);
 
 
 int main(){
-	int i;
+	int i, 	j;
 	int play;
 	int anser[4];
 	char input[6];
@@ -29,6 +29,9 @@ int main(){
 		for(play = 0 ; play < 10 ; ++play){
 			int Flag = 0;
 
+			for(j = 0; j< strlen(input); j++){
+				input[j] = 0;
+			}
 			printf("%d", play + 1);
 			switch(play){
 				case 0:
@@ -106,9 +109,9 @@ int Retry(){
 
 /* 文字列の入力用関数 */
 void input_str(char *in, int size){
-	int i = 0, n;
-	//size -= 1;
+	int i = 0, n, j = -1;
 	char in_tmp;
+
 	while ((in_tmp = getchar()) != '\n'){
 		n = i;
 		if(in_tmp == '\b' && 0 < i){
@@ -126,8 +129,9 @@ void input_str(char *in, int size){
 			}
 			i++;
 		}
+		j = 0;
 	}
-	if(i > size){	n = size;	}
+	if(i > size || j == -1){	n = size;	}
 	*(in + n + 1) = '\0';
 }
 
