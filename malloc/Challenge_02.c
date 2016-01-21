@@ -1,3 +1,5 @@
+/* ごみみたいな処理のプログラム */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,7 +18,6 @@ void print_student(struct student *person);
 int main(){
 	struct student *studentA, *studentB, *studentC;
 
-	/* ネタみたいな処理はここから*/
 	studentA = (struct student *)malloc(sizeof(struct student));
 	if(studentA == NULL)exit(1);
 	studentB = (struct student *)malloc(sizeof(struct student));
