@@ -114,14 +114,7 @@ void input_str(char *in, int size){
 
 	while ((in_tmp = getchar()) != '\n'){
 		n = i;
-		if(in_tmp == '\b' && 0 < i){
-			if(i >= size){
-				n = size;
-			}else{
-				*(in + n) = '\0';
-			}
-			i--;
-		}else{
+		if(0 == (in_tmp == '\b' && 0 < i)){
 			if(i >= size){
 				n = size;
 			}else{
