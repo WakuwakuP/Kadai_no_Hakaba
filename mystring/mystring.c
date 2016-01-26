@@ -1,7 +1,6 @@
 /*
-	GitHub URL :https://github.com/WakuwakuP/Kadai_no_Hakaba/tree/master/mystring
+	GitHub URL :https://github.com/WakuwakuP/Kadai_no_Hakaba/tree/master/mystring/
 */
-
 
 int mystrlen(const char* str){
 	int i = 0;
