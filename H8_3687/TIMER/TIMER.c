@@ -107,7 +107,7 @@ void SW03(void){
 	if(t / 60 >= 59){
 		tmp = t % 60;
 		times_reset();
-		times(tmp);				// 59分を超える場合0分にする
+		times(tmp);						// 59分を超える場合0分にする
 	}else{
 		times(60);						// 1分増やす
 	}
