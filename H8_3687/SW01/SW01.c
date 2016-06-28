@@ -1,7 +1,7 @@
 /***********************************************************************/
 /*                                                                     */
-/*  FILE        :AD02.c                                                */
-/*  DATE        :Tue, May 10, 2016                                     */
+/*  FILE        :SW01.c                                                */
+/*  DATE        :Tue, Apr 19, 2016                                     */
 /*  DESCRIPTION :Main Program                                          */
 /*  CPU TYPE    :H8/3687                                               */
 /*                                                                     */
@@ -11,8 +11,9 @@
 /*                                                                     */
 /***********************************************************************/
 
+
+
 #include "iodefine.h"
-#include "lcd_func.h"
 
 void main(void);
 #ifdef __cplusplus
@@ -23,30 +24,20 @@ void abort(void);
 
 void main(void)
 {
-	unsigned int vr1 = 0, vr2 = 0;
-
-	AD.ADCSR.BYTE =0x1E;
-
-	lcd_init();
-	lcd_xy(1, 1);
-	lcd_puts("VR1:");
-	lcd_xy(1, 2);
-	lcd_puts("VR2:");
-	while(1){
-		AD.ADCSR.BIT.ADST = 1;
-
-		while(!AD.ADCSR.BIT.ADF);
-
-		vr1 = (AD.ADDRB >> 6) * 0.098;
-		vr2 = (AD.ADDRC >> 6) * 0.098;
-		lcd_xy(5, 1);
-		lcd_dataout(vr1);
-		lcd_puts("[%]  ");
-		lcd_xy(5, 2);
-		lcd_dataout(vr2);
-		lcd_puts("[%]  ");
-		AD.ADCSR.BIT.ADF = 0;
+	IO.PCR3 = 0xFF;
+	IO.PCR2 = 0x01;
+	for(;;){
+		IO.PDR3.BIT.B1 = NOT(IO.PDR1.BIT.B4);
+		IO.PDR3.BIT.B2 = NOT(IO.PDR1.BIT.B5);
+		IO.PDR2.BIT.B0 = NOT(IO.PDR1.BIT.B6);
 	}
+}
+
+int NOT(unsigned int a){
+	if(a == 0){
+		return 1;
+	}
+	return 0;
 }
 
 #ifdef __cplusplus
