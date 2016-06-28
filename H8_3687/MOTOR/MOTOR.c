@@ -5,6 +5,8 @@
 /*  DESCRIPTION :Main Program                                          */
 /*  CPU TYPE    :H8/3687                                               */
 /*                                                                     */
+/*  github URL: https://github.com/WakuwakuP/Kadai_no_Hakaba           */
+/*                                                                     */
 /***********************************************************************/
 
 #include "iodefine.h"
