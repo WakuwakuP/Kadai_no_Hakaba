@@ -44,8 +44,6 @@ void MoveStageR(void);						// ステージ右(-)移動用関数
 void MoveStageL(void);						// ステージ左(+)移動用関数
 void MoveStagePlus(int);					// 数値指定ステージ移動関数
 
-void wait(void);							// チャタリング防止用関数
-
 void main(void){
 	lcd_init();								// LCD初期化
 	IO.PCR5			= 0xF0;					// LCD使用。0~3まで入力使用
@@ -68,12 +66,8 @@ void main(void){
 
 	IENR1.BYTE		= 0x3F;					// 割り込み許可
 
-
-	MoveStagePlus(-500);
-
-
 	for(;;){
-		if(0 >= pulse && 0 != mode){
+		if(0 >= pulse && 1 == mode){
 			mode = 0;
 			TZ.TOER.BIT.EC0 = 1;
 			TZ.TOER.BIT.ED0 = 1;
@@ -98,13 +92,13 @@ void main(void){
 void WKP_func(){
 	// エンコーダ割り込み
 	if(1 == IWPR.BIT.IWPF0){
-		if(0 == IO.PDR5.BIT.B1){
+		if(1 == mode){
 			pulse--;
 			IWPR.BYTE = 0x00;
 			return;
 		}
-		if(1 == IO.PDR5.BIT.B1){
-			pulse--;
+		if(2 == mode){
+			pulse++;
 			IWPR.BYTE = 0x00;
 			return;
 		}
@@ -134,51 +128,53 @@ void WKP_func(){
 }
 
 void MoveStageL(void){
-	mode = 2;
-	TZ0.GRC = 0;
-	TZ0.GRD = 15000;
-	TZ.TOER.BIT.ED0 = 0;
-	TZ0.TCNT = 0;
-	TZ.TSTR.BIT.STR0 = 1;
-	IRR1.BYTE = 0x30;
+	if(1 == IO.PDR5.BIT.B2){
+		mode = 2;
+		pulse = 0;
+		TZ0.GRC = 0;
+		TZ0.GRD = 15000;
+		TZ.TOER.BIT.ED0 = 0;
+		TZ0.TCNT = 0;
+		TZ.TSTR.BIT.STR0 = 1;
+	}
 }
 
 void MoveStageR(void){
-	mode = 2;
-	TZ0.GRC = 15000;
-	TZ0.GRD = 0;
-	TZ.TOER.BIT.EC0 = 0;
-	TZ0.TCNT = 0;
-	TZ.TSTR.BIT.STR0 = 1;
-	IRR1.BYTE = 0x30;
+	if(1 == IO.PDR5.BIT.B3){
+		mode = 2;
+		pulse = 0;
+		TZ0.GRC = 15000;
+		TZ0.GRD = 0;
+		TZ.TOER.BIT.EC0 = 0;
+		TZ0.TCNT = 0;
+		TZ.TSTR.BIT.STR0 = 1;
+	}
 }
 
 void MoveStagePlus(int n){
 	if(1 <= n){
-		mode = 1;
-		pulse = n;
-		TZ0.GRC = 15000;
-		TZ0.GRD = 0;
-		TZ.TOER.BIT.EC0 = 0;
+		if(1 == IO.PDR5.BIT.B3){
+			mode = 1;
+			pulse = n;
+			TZ0.GRC = 15000;
+			TZ0.GRD = 0;
+			TZ.TOER.BIT.EC0 = 0;
+		}
 	}
 	if(-1 >= n){
-		mode = 1;
-		pulse = -n;
-		TZ0.GRC = 0;
-		TZ0.GRD = 15000;
-		TZ.TOER.BIT.ED0 = 0;
+		if(1 == IO.PDR5.BIT.B2){
+			mode = 1;
+			pulse = -n;
+			TZ0.GRC = 0;
+			TZ0.GRD = 15000;
+			TZ.TOER.BIT.ED0 = 0;
+		}
 	}
 	TZ0.TCNT = 0;
 	TZ.TSTR.BIT.STR0 = 1;
-	IRR1.BYTE = 0x30;
 }
 
-void wait(){
-	unsigned int i;
-	for(i = 0; i < 500000; i++){
-		;
-	}
-}
+
 
 #ifdef __cplusplus
 void abort(void)

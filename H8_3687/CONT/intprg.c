@@ -11,7 +11,7 @@
 /*                                                                     */
 /***********************************************************************/
 
-
+#include "iodefine.h"
 
 #include <machine.h>
 #pragma section IntPRG
@@ -43,22 +43,26 @@ __interrupt(vect=12) void INT_ABRK(void) {/* sleep(); */}
 __interrupt(vect=13) void INT_SLEEP(void) {/* sleep(); */}
 //  vector 14 IRQ0
 __interrupt(vect=14) void INT_IRQ0(void) {
-	wait();
+	IO.PDR3.BYTE = 0x01;
+	IRR1.BYTE = 0x30;
 	MoveStageL();
 }
 //  vector 15 IRQ1
 __interrupt(vect=15) void INT_IRQ1(void) {
-	wait();
+	IO.PDR3.BYTE = 0x02;
+	IRR1.BYTE = 0x30;
 	MoveStagePlus(-616);
 }
 //  vector 16 IRQ2
 __interrupt(vect=16) void INT_IRQ2(void) {
-	wait();
+	IO.PDR3.BYTE = 0x04;
+	IRR1.BYTE = 0x30;
 	MoveStagePlus(616);
 }
 //  vector 17 IRQ3
 __interrupt(vect=17) void INT_IRQ3(void) {
-	wait();
+	IO.PDR3.BYTE = 0x08;
+	IRR1.BYTE = 0x30;
 	MoveStageR();
 }
 //  vector 18 WKP
