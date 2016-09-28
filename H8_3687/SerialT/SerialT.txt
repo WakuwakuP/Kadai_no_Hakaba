@@ -1,0 +1,22 @@
+/start main_start
+	/define 　初期設定
+	wait
+	シリアル通信許可
+	/while 無限ループ
+		/input 　A/D変換
+		/a 　A/D変換待機
+		/a 　8ビット右にシフト
+		/if 前回と同じか
+		/else
+			/a 前回のAD変換の値を　更新
+			/a シリアル通信でA/D変換の値を送信
+		/end
+	/end
+/stop main_stop
+/start SCI3_start
+	/if 値を受信できた
+		/a PWM割り込みクロック更新
+	/else
+		/a エラービットを初期化
+	/end
+/stop SCI3_stop

@@ -50,8 +50,8 @@ void main(void) {
 
 	wait(2);
 
-	SCI3_2.SCR3.BIT.RE = 1;				// 受信割込許可
-	SCI3_2.SCR3.BIT.RIE = 1;
+	SCI3_2.SCR3.BIT.RE = 1;				// 受信許可
+	SCI3_2.SCR3.BIT.RIE = 1;			// 受信割込許可
 	SCI3_2.SCR3.BIT.TE = 1;				// 送信許可
 
 	TZ.TOER.BIT.EC0 = 0;
@@ -65,7 +65,7 @@ void main(void) {
 		vr_now = AD.ADDRB >> 8;
 		if(vr_bk != vr_now) {
 			vr_bk = vr_now;
-			SCI3_2.TDR = vr_bk;			// 相手に結果を送信
+			SCI3_2.TDR = vr_bk;			// 相手に送信
 		}
 		AD.ADCSR.BIT.ADF = 0;
 	}
