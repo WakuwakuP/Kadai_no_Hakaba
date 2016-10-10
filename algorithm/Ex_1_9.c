@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+int sumof(int a, int b);
+
 int sumof(int a, int b){
     int sub = (a > b)? a - b + 1 : b - a + 1;
     int sum = a + b;
