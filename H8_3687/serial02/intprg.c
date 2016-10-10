@@ -1,7 +1,7 @@
 /***********************************************************************/
 /*                                                                     */
 /*  FILE        :intprg.c                                              */
-/*  DATE        :Tue, May 24, 2016                                     */
+/*  DATE        :Tue, Jun 21, 2016                                     */
 /*  DESCRIPTION :Interrupt Program                                     */
 /*  CPU TYPE    :H8/3687                                               */
 /*                                                                     */
@@ -11,10 +11,10 @@
 /*                                                                     */
 /***********************************************************************/
 
-#include "iodefine.h"
+
+
 #include <machine.h>
 #pragma section IntPRG
-
 //  vector 1 Reserved
 
 //  vector 2 Reserved
@@ -41,34 +41,18 @@ __interrupt(vect=11) void INT_TRAP3(void) {/* sleep(); */}
 __interrupt(vect=12) void INT_ABRK(void) {/* sleep(); */}
 //  vector 13 SLEEP
 __interrupt(vect=13) void INT_SLEEP(void) {/* sleep(); */}
-//  vector 14 IRQ0*/
+//  vector 14 IRQ0
 __interrupt(vect=14) void INT_IRQ0(void) {
-	IENR1.BYTE = 0x13;					// 時間設定不可
-	time_pauce();
-	wait();
-	IRR1.BIT.IRRI0 = 0;					// フラグリセット
+	IRQ0();
 }
 //  vector 15 IRQ1
 __interrupt(vect=15) void INT_IRQ1(void) {
-	init_TB1(0);						// タイマーリセット
-	times_reset();
-	IO.PDR3.BIT.B7 = 0;					// LED7の停止
-	IENR1.BYTE = 0x1F;					// スイッチ割り込み全許可
-	IO.PDR2.BIT.B0 = 0;					// ブザー停止
-	IRR1.BIT.IRRI1 = 0;					// フラグリセット
+	IRQ1();
 }
 //  vector 16 IRQ2
-__interrupt(vect=16) void INT_IRQ2(void) {
-	SW03();
-	wait();
-	IRR1.BIT.IRRI2 = 0;					// フラグリセット
-}
+__interrupt(vect=16) void INT_IRQ2(void) {/* sleep(); */}
 //  vector 17 IRQ3
-__interrupt(vect=17) void INT_IRQ3(void) {
-	SW04();
-	wait();
-	IRR1.BIT.IRRI3 = 0;					// フラグリセット
-}
+__interrupt(vect=17) void INT_IRQ3(void) {/* sleep(); */}
 //  vector 18 WKP
 __interrupt(vect=18) void INT_WKP(void) {/* sleep(); */}
 //  vector 19 RTC
@@ -92,9 +76,7 @@ __interrupt(vect=27) void INT_TimerZ1(void) {/* sleep(); */}
 //  vector 28 Reserved
 
 //  vector 29 Timer B1
-__interrupt(vect=29) void INT_TimerB1(void) {
-	timer_B1();
-}
+__interrupt(vect=29) void INT_TimerB1(void) {/* sleep(); */}
 //  vector 30 Reserved
 
 //  vector 31 Reserved

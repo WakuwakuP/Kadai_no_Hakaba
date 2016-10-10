@@ -1,7 +1,7 @@
 /***********************************************************************/
 /*                                                                     */
-/*  FILE        :TZ01.c                                                */
-/*  DATE        :Tue, May 31, 2016                                     */
+/*  FILE        :SERVO01.c                                             */
+/*  DATE        :Tue, Jul 05, 2016                                     */
 /*  DESCRIPTION :Main Program                                          */
 /*  CPU TYPE    :H8/3687                                               */
 /*                                                                     */
@@ -14,6 +14,8 @@
 #include "iodefine.h"
 #include <machine.h>
 
+void Servo(int);
+
 void main(void);
 #ifdef __cplusplus
 extern "C" {
@@ -21,31 +23,39 @@ void abort(void);
 }
 #endif
 
-
 void main(void){
+
 	set_imask_ccr(1);
 
-	IO.PMR1.BYTE = 0xF0;				// SWを割り込みモードに
+	IO.PMR1.BYTE = 0xD0;				// SWを割り込みモードに
 	IEGR1.BYTE = 0x70;					// 立ち上がりエッジに設定
-	IENR1.BYTE = 0x17;					// 割り込み許可
+	IENR1.BYTE = 0x1D;					// 割り込み許可
 	IRR1.BYTE = 0x30;					// 割り込みフラグクリア
 
-		// 1/(Φ/8)*
 
 	TZ0.TCR.BYTE = 0x23;				// GRAと一致でクリア&立ち上がりでカウント&プリスケーラ/8に
 	TZ0.POCR.BYTE = 0xF8;				// アクティブ設定
 	TZ.TPMR.BYTE = 0x8E;				// PWMモードに
-	TZ.TOCR.BYTE = 0x0C;				// 初期出力設定
-	TZ0.GRA = 25000;					// MAX=25000
-	TZ0.GRC = 0;
-	TZ0.GRD = 0;
+	TZ.TOCR.BYTE = 0x02;				// 初期出力設定
+	TZ0.GRA = 50000;					// MAX=50000
+	TZ0.GRC = 3750;						// 初期位置
 
 	set_imask_ccr(0);
 
-	for(;;);
+	TZ.TOER.BIT.EC0 = 0;
+	TZ.TSTR.BIT.STR0 = 1;
+
+	IO.PCR2 = 0x08;
+
+	for(;;){
+		IO.PDR2.BIT.B3 = IO.PDR6.BIT.B2;
+	}
 }
 
-
+void Servo(int n){
+	TZ0.GRC = n;
+	IRR1.BYTE = 0x30;					// フラグリセット
+}
 
 #ifdef __cplusplus
 void abort(void)

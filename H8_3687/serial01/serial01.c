@@ -1,7 +1,7 @@
 /***********************************************************************/
 /*                                                                     */
-/*  FILE        :AD02.c                                                */
-/*  DATE        :Tue, May 10, 2016                                     */
+/*  FILE        :serial01.c                                            */
+/*  DATE        :Tue, Jun 21, 2016                                     */
 /*  DESCRIPTION :Main Program                                          */
 /*  CPU TYPE    :H8/3687                                               */
 /*                                                                     */
@@ -12,7 +12,9 @@
 /***********************************************************************/
 
 #include "iodefine.h"
-#include "lcd_func.h"
+
+void wait(int);
+void func_sci(void);
 
 void main(void);
 #ifdef __cplusplus
@@ -21,32 +23,30 @@ void abort(void);
 }
 #endif
 
-void main(void)
-{
-	unsigned int vr1 = 0, vr2 = 0;
+void main(void){
+	IO.PCR3 = 0xFF;
+	SCI3.SCR3.BIT.RE = 0;			// 受信不可
+	SCI3.SMR.BYTE = 0x00;			// 初歩同期式, クロック設定0
+	SCI3.BRR = 64;					// ビットレート64[bit/s]
 
-	AD.ADCSR.BYTE =0x1E;
+	wait(2);
 
-	lcd_init();
-	lcd_xy(1, 1);
-	lcd_puts("VR1:");
-	lcd_xy(1, 2);
-	lcd_puts("VR2:");
-	while(1){
-		AD.ADCSR.BIT.ADST = 1;
+	SCI3.SCR3.BIT.RE = 1;			// 受信許可
+	SCI3.SCR3.BIT.RIE = 1;			// 割り込み設定
+	while(1);
+}
 
-		while(!AD.ADCSR.BIT.ADF);
-
-		vr1 = (AD.ADDRB >> 6) * 0.098;
-		vr2 = (AD.ADDRC >> 6) * 0.098;
-		lcd_xy(5, 1);
-		lcd_dataout(vr1);
-		lcd_puts("[%]  ");
-		lcd_xy(5, 2);
-		lcd_dataout(vr2);
-		lcd_puts("[%]  ");
-		AD.ADCSR.BIT.ADF = 0;
+void wait(int n){
+	int i, j;
+	for (i = 0; i < n; i++){
+		for (j = 0; j < 1000; j++){
+			;
+		}
 	}
+}
+
+void func_sci(void){
+	IO.PDR3.BYTE = SCI3.RDR;
 }
 
 #ifdef __cplusplus
