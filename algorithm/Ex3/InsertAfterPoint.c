@@ -64,7 +64,7 @@ void InsertAfter(List *list, Node *p, const Member *x){
 int main() {
 	List list;
 	char text[10];
-
+ /* 初期化 */
 	list.head = NULL;
 	list.crnt = NULL;
 
@@ -77,13 +77,13 @@ int main() {
 			int n, i;
 			Member addMember;
 			Node *ptr = list.head;
-			if (NULL == ptr){
+			if (NULL == ptr){				// リストが空の場合
 				printf("no   : "); scanf("%d", &addMember.no);
 				printf("name : "); scanf("%s", addMember.name);
 				InsertFront(&list, &addMember);
 			} else {
 				printf("何個目の次に挿入しますか\n: "); scanf("%d", &n);
-				if (0 == n) {
+				if (0 == n) {					// 先頭の場合
 					printf("No   : "); scanf("%d", &addMember.no);
 					printf("name : "); scanf("%s", addMember.name);
 					InsertFront(&list, &addMember);

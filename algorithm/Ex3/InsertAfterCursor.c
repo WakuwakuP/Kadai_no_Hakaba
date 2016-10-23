@@ -45,6 +45,7 @@ void PrintList(const List *list){
 	}
 }
 
+/* 空いている配列要素の取得 */
 static Index getIndex(List *list){
 	if (list->deleted == Null) {
 		return ++(list->max);
@@ -55,6 +56,7 @@ static Index getIndex(List *list){
 	}
 }
 
+/* データをセット */
 static void setNode(Node *n, const Member *x, Index next){
 	n->data = *x;
 	n->next = next;
@@ -77,7 +79,7 @@ void InsertAfter(List *list, Index idx, const Member *x){
 int main() {
 	List list;
 	char text[10];
-
+/* 初期化 */
 	list.n       = calloc(SIZE, sizeof(Node));
 	list.head    = Null;
 	list.crnt    = Null;
@@ -87,19 +89,20 @@ int main() {
 	for(;;){
 		printf("何をしますか。(データの表示 : print / データの追加 : add / 終了 : exit)\n : ");
 		scanf("%s", text);
+		/* 頭文字のみ見る */
 		if ('p' == text[0]) {
 			PrintList(&list);
 		} else if ('a' == text[0]) {
 			int n, i;
 			Member addMember;
 			Index ptr = list.head;
-			if (Null == ptr){
+			if (Null == ptr){			// リストが空の場合
 				printf("no   : "); scanf("%d", &addMember.no);
 				printf("name : "); scanf("%s", addMember.name);
 				InsertFront(&list, &addMember);
 			} else {
 				printf("何個目の次に挿入しますか\n: "); scanf("%d", &n);
-				if (0 == n) {
+				if (0 == n) {				// 先頭の場合
 					printf("No   : "); scanf("%d", &addMember.no);
 					printf("name : "); scanf("%s", addMember.name);
 					InsertFront(&list, &addMember);
@@ -130,6 +133,5 @@ int main() {
 			break;
 		}
 	}
-	//InsertAfter(&list, AllocNode(),)
 	return 0;
 }
