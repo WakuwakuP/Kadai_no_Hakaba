@@ -1,0 +1,528 @@
+::::::::::::::
+input
+::::::::::::::
+1000
+::::::::::::::
+result
+::::::::::::::
+Data Size: 1000
+Random
+Bubble
+Bubble
+Bubble
+ Comp: 499500
+ Swap: 256947
+Selection
+Selection
+Selection
+ Comp: 499500
+ Swap: 999
+Insert
+Insert
+Insert
+ Comp: 257938
+ Swap: 256947
+Shell
+Shell
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+Quick
+Quick
+ Comp: 11953
+ Swap: 2711
+Marge
+Marge
+Marge
+ Comp: 8698
+ Swap: 0
+Heap
+Heap
+Heap
+ Comp: 16826
+ Swap: 9064
+Ascending
+Bubble
+ Comp: 499500
+ Swap: 0
+Selection
+ Comp: 499500
+ Swap: 999
+Insert
+ Comp: 999
+ Swap: 0
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+ Comp: 9009
+ Swap: 511
+Marge
+ Comp: 5044
+ Swap: 0
+Heap
+ Comp: 17583
+ Swap: 9708
+Descending
+Bubble
+ Comp: 499500
+ Swap: 499500
+Selection
+ Comp: 499500
+ Swap: 999
+Insert
+ Comp: 499500
+ Swap: 499500
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+ Comp: 9016
+ Swap: 1010
+Marge
+ Comp: 4932
+ Swap: 0
+Heap
+ Comp: 15965
+ Swap: 8316
+::::::::::::::
+input
+::::::::::::::
+5000
+::::::::::::::
+result
+::::::::::::::
+Data Size: 5000
+Random
+Bubble
+Bubble
+Bubble
+ Comp: 12497500
+ Swap: 6357271
+Selection
+Selection
+Selection
+ Comp: 12497500
+ Swap: 4999
+Insert
+Insert
+Insert
+ Comp: 6362263
+ Swap: 6357271
+Shell
+Shell
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+Quick
+Quick
+ Comp: 76805
+ Swap: 16068
+Marge
+Marge
+Marge
+ Comp: 55252
+ Swap: 0
+Heap
+Heap
+Heap
+ Comp: 107644
+ Swap: 57038
+Ascending
+Bubble
+ Comp: 12497500
+ Swap: 0
+Selection
+ Comp: 12497500
+ Swap: 4999
+Insert
+ Comp: 4999
+ Swap: 0
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+ Comp: 57726
+ Swap: 2952
+Marge
+ Comp: 32004
+ Swap: 0
+Heap
+ Comp: 112126
+ Swap: 60932
+Descending
+Bubble
+ Comp: 12497500
+ Swap: 12497500
+Selection
+ Comp: 12497500
+ Swap: 4999
+Insert
+ Comp: 12497500
+ Swap: 12497500
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+ Comp: 57738
+ Swap: 5452
+Marge
+ Comp: 29804
+ Swap: 0
+Heap
+ Comp: 103227
+ Swap: 53436
+::::::::::::::
+input
+::::::::::::::
+10000
+::::::::::::::
+result
+::::::::::::::
+Data Size: 10000
+Random
+Bubble
+Bubble
+Bubble
+ Comp: 49995000
+ Swap: 24931811
+Selection
+Selection
+Selection
+ Comp: 49995000
+ Swap: 9999
+Insert
+Insert
+Insert
+ Comp: 24941799
+ Swap: 24931811
+Shell
+Shell
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+Quick
+Quick
+ Comp: 163382
+ Swap: 34670
+Marge
+Marge
+Marge
+ Comp: 120429
+ Swap: 0
+Heap
+Heap
+Heap
+ Comp: 235391
+ Swap: 124274
+Ascending
+Bubble
+ Comp: 49995000
+ Swap: 0
+Selection
+ Comp: 49995000
+ Swap: 9999
+Insert
+ Comp: 9999
+ Swap: 0
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+ Comp: 125439
+ Swap: 5904
+Marge
+ Comp: 69008
+ Swap: 0
+Heap
+ Comp: 244460
+ Swap: 131956
+Descending
+Bubble
+ Comp: 49995000
+ Swap: 49995000
+Selection
+ Comp: 49995000
+ Swap: 9999
+Insert
+ Comp: 49995000
+ Swap: 49995000
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+ Comp: 125452
+ Swap: 10904
+Marge
+ Comp: 64608
+ Swap: 0
+Heap
+ Comp: 226682
+ Swap: 116696
+::::::::::::::
+input
+::::::::::::::
+30000
+::::::::::::::
+result
+::::::::::::::
+Data Size: 30000
+Random
+Bubble
+Bubble
+Bubble
+ Comp: 449985000
+ Swap: 224367867
+Selection
+Selection
+Selection
+ Comp: 449985000
+ Swap: 29999
+Insert
+Insert
+Insert
+ Comp: 224397855
+ Swap: 224367867
+Shell
+Shell
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+Quick
+Quick
+ Comp: 583216
+ Swap: 114212
+Marge
+Marge
+Marge
+ Comp: 408540
+ Swap: 0
+Heap
+Heap
+Heap
+ Comp: 800577
+ Swap: 419847
+Ascending
+Bubble
+ Comp: 449985000
+ Swap: 0
+Selection
+ Comp: 449985000
+ Swap: 29999
+Insert
+ Comp: 29999
+ Swap: 0
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+ Comp: 420014
+ Swap: 16383
+Marge
+ Comp: 227728
+ Swap: 0
+Heap
+ Comp: 826347
+ Swap: 440100
+Descending
+Bubble
+ Comp: 449985000
+ Swap: 449985000
+Selection
+ Comp: 449985000
+ Swap: 29999
+Insert
+ Comp: 449985000
+ Swap: 449985000
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+ Comp: 420026
+ Swap: 31382
+Marge
+ Comp: 219504
+ Swap: 0
+Heap
+ Comp: 775687
+ Swap: 399212
+::::::::::::::
+input
+::::::::::::::
+50000
+::::::::::::::
+result
+::::::::::::::
+Data Size: 50000
+Random
+Bubble
+Bubble
+Bubble
+ Comp: 1249975000
+ Swap: 628199749
+Selection
+Selection
+Selection
+ Comp: 1249975000
+ Swap: 49999
+Insert
+Insert
+Insert
+ Comp: 628249737
+ Swap: 628199749
+Shell
+Shell
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+Quick
+Quick
+ Comp: 952123
+ Swap: 201175
+Marge
+Marge
+Marge
+ Comp: 718407
+ Swap: 0
+Heap
+Heap
+Heap
+ Comp: 1409883
+ Swap: 737426
+Ascending
+Bubble
+ Comp: 1249975000
+ Swap: 0
+Selection
+ Comp: 1249975000
+ Swap: 49999
+Insert
+ Comp: 49999
+ Swap: 0
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+ Comp: 750015
+ Swap: 32767
+Marge
+ Comp: 401952
+ Swap: 0
+Heap
+ Comp: 1455438
+ Swap: 773304
+Descending
+Bubble
+ Comp: 1249975000
+ Swap: 1249975000
+Selection
+ Comp: 1249975000
+ Swap: 49999
+Insert
+ Comp: 1249975000
+ Swap: 1249975000
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+ Comp: 750028
+ Swap: 57766
+Marge
+ Comp: 382512
+ Swap: 0
+Heap
+ Comp: 1366047
+ Swap: 698892
+::::::::::::::
+input
+::::::::::::::
+100000
+::::::::::::::
+result
+::::::::::::::
+Data Size: 100000
+Random
+Bubble
+Bubble
+Bubble
+ Comp: 704982704
+ Swap: -1792716159
+Selection
+Selection
+Selection
+ Comp: 704982704
+ Swap: 99999
+Insert
+Insert
+Insert
+ Comp: -1792616176
+ Swap: -1792716159
+Shell
+Shell
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+Quick
+Quick
+ Comp: 2063130
+ Swap: 424862
+Marge
+Marge
+Marge
+ Comp: 1536317
+ Swap: 0
+Heap
+Heap
+Heap
+ Comp: 3019661
+ Swap: 1575230
+Ascending
+Bubble
+ Comp: 704982704
+ Swap: 0
+Selection
+ Comp: 704982704
+ Swap: 99999
+Insert
+ Comp: 99999
+ Swap: 0
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+ Comp: 1600016
+ Swap: 65535
+Marge
+ Comp: 853904
+ Swap: 0
+Heap
+ Comp: 3112517
+ Swap: 1650854
+Descending
+Bubble
+ Comp: 704982704
+ Swap: 704982704
+Selection
+ Comp: 704982704
+ Swap: 99999
+Insert
+ Comp: 704982704
+ Swap: 704982704
+Shell
+ Comp: 0
+ Swap: 0
+Quick
+ Comp: 1600030
+ Swap: 115534
+Marge
+ Comp: 815024
+ Swap: 0
+Heap
+ Comp: 2926640
+ Swap: 1497434

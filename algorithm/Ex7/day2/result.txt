@@ -1,0 +1,216 @@
+::::::::::::::
+input
+::::::::::::::
+1
+1000
+::::::::::::::
+result
+::::::::::::::
+Data Type(1-3)
+Random:1 Ascending:2 Descending:3
+: 1
+Data Size: 1000
+Front
+ Comp: 13573
+ Swap: 2560
+Back
+ Comp: 14918
+ Swap: 2666
+Center
+ Comp: 13573
+ Swap: 2560
+Median
+ Comp: 12242
+ Swap: 2688
+::::::::::::::
+input
+::::::::::::::
+1
+5000
+::::::::::::::
+result
+::::::::::::::
+Data Type(1-3)
+Random:1 Ascending:2 Descending:3
+: 1
+Data Size: 5000
+Front
+ Comp: 84459
+ Swap: 15623
+Back
+ Comp: 97432
+ Swap: 15873
+Center
+ Comp: 84459
+ Swap: 15623
+Median
+ Comp: 80324
+ Swap: 16047
+::::::::::::::
+input
+::::::::::::::
+1
+10000
+::::::::::::::
+result
+::::::::::::::
+Data Type(1-3)
+Random:1 Ascending:2 Descending:3
+: 1
+Data Size: 10000
+Front
+ Comp: 177419
+ Swap: 33820
+Back
+ Comp: 208812
+ Swap: 34253
+Center
+ Comp: 177419
+ Swap: 33820
+Median
+ Comp: 159594
+ Swap: 34988
+::::::::::::::
+input
+::::::::::::::
+2
+1000
+::::::::::::::
+result
+::::::::::::::
+Data Type(1-3)
+Random:1 Ascending:2 Descending:3
+: 2
+Data Size: 1000
+Front
+ Comp: 9009
+ Swap: 511
+Back
+ Comp: 501498
+ Swap: 999
+Center
+ Comp: 9009
+ Swap: 511
+Median
+ Comp: 9009
+ Swap: 511
+::::::::::::::
+input
+::::::::::::::
+2
+5000
+::::::::::::::
+result
+::::::::::::::
+Data Type(1-3)
+Random:1 Ascending:2 Descending:3
+: 2
+Data Size: 5000
+Front
+ Comp: 57726
+ Swap: 2952
+Back
+ Comp: 12507498
+ Swap: 4999
+Center
+ Comp: 57726
+ Swap: 2952
+Median
+ Comp: 57726
+ Swap: 2952
+::::::::::::::
+input
+::::::::::::::
+2
+10000
+::::::::::::::
+result
+::::::::::::::
+Data Type(1-3)
+Random:1 Ascending:2 Descending:3
+: 2
+Data Size: 10000
+Front
+ Comp: 125439
+ Swap: 5904
+Back
+ Comp: 50014998
+ Swap: 9999
+Center
+ Comp: 125439
+ Swap: 5904
+Median
+ Comp: 125439
+ Swap: 5904
+::::::::::::::
+input
+::::::::::::::
+3
+1000
+::::::::::::::
+result
+::::::::::::::
+Data Type(1-3)
+Random:1 Ascending:2 Descending:3
+: 3
+Data Size: 1000
+Front
+ Comp: 9016
+ Swap: 1010
+Back
+ Comp: 501996
+ Swap: 999
+Center
+ Comp: 9016
+ Swap: 1010
+Median
+ Comp: 9016
+ Swap: 1010
+::::::::::::::
+input
+::::::::::::::
+3
+5000
+::::::::::::::
+result
+::::::::::::::
+Data Type(1-3)
+Random:1 Ascending:2 Descending:3
+: 3
+Data Size: 5000
+Front
+ Comp: 57738
+ Swap: 5452
+Back
+ Comp: 12509996
+ Swap: 4999
+Center
+ Comp: 57738
+ Swap: 5452
+Median
+ Comp: 57738
+ Swap: 5452
+::::::::::::::
+input
+::::::::::::::
+3
+10000
+::::::::::::::
+result
+::::::::::::::
+Data Type(1-3)
+Random:1 Ascending:2 Descending:3
+: 3
+Data Size: 10000
+Front
+ Comp: 125452
+ Swap: 10904
+Back
+ Comp: 50019996
+ Swap: 9999
+Center
+ Comp: 125452
+ Swap: 10904
+Median
+ Comp: 125452
+ Swap: 10904
