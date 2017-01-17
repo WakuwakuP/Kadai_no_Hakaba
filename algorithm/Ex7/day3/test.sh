@@ -32,10 +32,5 @@ echo 100000 > input
 ./a < input > result
 more input result >> $FILE
 date +"%Y/%m/%d %p %I:%M:%S"
-echo 500000
-echo 500000 > input
-./a < input > result
-more input result >> $FILE
-date +"%Y/%m/%d %p %I:%M:%S"
 rm input
 rm result

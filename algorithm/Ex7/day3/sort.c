@@ -3,6 +3,9 @@
 #include <malloc.h>
 /* Quick Sort */
 
+unsigned long long int counterSwap;
+unsigned long long int counterComp;
+
 int compare (int a, int b);
 
 void swap (int *d, int a, int b);
@@ -183,20 +186,19 @@ void shell_sort (int *data, int n) {
 	for (gap = n / 2; gap > 0; gap /= 2) {
 		for (i = gap; i < n; i ++) {
 			for (j = i - gap; j >= 0; j -= gap) {
+				counterComp++;
 				if (data[j] <= data[j + gap]) {
 					break;
 				} else {
 					temp = data[j];
 					data[j] = data[j + gap];
 					data[j + gap] = temp;
+					counterSwap++;
 				}
 			}
 		}
 	}
 }
-
-unsigned long long int counterSwap;
-unsigned long long int counterComp;
 
 int main(void) {
 	int *data, *data_back;
