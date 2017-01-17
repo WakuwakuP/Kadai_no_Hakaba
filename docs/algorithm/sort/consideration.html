@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Sort 考察</title>
+		<style type="text/css">
+		 <!--
+			body {
+				text-align: center;
+				background-color: #fffff0;
+			}
+			.title {
+				padding: 20px 40px;
+			}
+			.main {
+				width: 100%;
+			}
+			.body {
+				display: inline-block;
+				width: 700px;
+				text-align: left;
+			}
+			.table {
+				display:inline-block;
+				padding:10px;
+			}
+			.footer div {
+				padding: 10px;
+			}
+		-->
+		</style>
+	</head>
+	<body>
+		<div class="title">
+			<h2>Sort 考察</h2>
+		</div>
+		<div class="main">
+			<div class="body">
+				<div>
+					<h3>単純ソート3種について</h3>
+					<div style="padding-left: 20px;">
+						<p>交換ソートでは比較回数はどの場合も同じだが</p>
+						<ul>
+							<li>交換回数は元のデータがソート済みの場合なら最小の0回</li>
+							<li>逆順だと比較回数と同じ回数となり最大</li>
+						</ul>
+						<p>である。</p>
+						<p>選択ソートでは，どの場合でも比較回数・交換回数ともに同じ回数であり，実行時間の変化が少ない。</p>
+						<p>挿入ソートでは，交換ソート・選択ソートより比較回数が少なくなる。交換回数は交換ソートと同じになる。</p>
+						<p>どのソートもデータ数が増えるごとに爆発的に回数が増えていく。</p>
+					</div>
+				</div>
+				<div>
+					<h3>シェルソートについて</h3>
+					<div style="padding-left: 20px;">
+						<p>比較回数・交換回数ともに挿入ソートを上回る成績。挿入ソートの改良版というだけのことはある。</p>
+					</div>
+				</div>
+				<div>
+					<h3>クイックソートについて</h3>
+					<div style="padding-left: 20px;">
+						<p>ソートするごとに速度に差はあるが高速なソートである。</p>
+					</div>
+				</div>
+				<div>
+					<h3>マージソートについて</h3>
+					<div style="padding-left: 20px;">
+						<p>どんなデータ列でも安定して同じ速度でソートできる。また，クイックソートより誤差程度で遅かった。</p>
+					</div>
+				</div>
+				<div>
+					<h3>ヒープソートについて</h3>
+					<div style="padding-left: 20px;">
+						<p>ヒープ木を組み直すため，その分交換回数が多くなり，クイックソート，マージソートより遅くなった。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div><a href="comparison.html">比較表</a></div>
+			<div><a href="../../">Top</a></div>
+			<p>(C) 2017 Naoki Fujisawa</p>
+		</div>
+	</body>
+</html>

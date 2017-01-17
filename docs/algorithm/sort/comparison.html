@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Sort Result</title>
+		<style type="text/css">
+		<!--
+			body {
+				text-align: center;
+				background-color: #fffff0;
+			}
+			.title {
+				padding: 20px 40px;
+			}
+			.main {
+				width: 100%;
+			}
+			.table {
+				display:inline-block;
+				padding:10px;
+			}
+			.footer div {
+				padding: 10px;
+			}
+			table {
+				background-color: #000000;
+			}
+			th {
+				background-color: #ffaaff;
+			}
+			td {
+				background-color: #fff0ff;
+			}
+		-->
+		</style>
+	</head>
+	<body>
+		<div class="title">
+			<h2>Sort わかりやすいように出力結果を表にまとめる</h2>
+		</div>
+		<div class="main">
+			<div class="table">
+				<p>出力結果</p>
+				<table border="0" cellspacing="2">
+					<tr>
+						<th rowspan="2">データの数</th>
+						<th rowspan="2">Comp&nbsp;&amp;&nbsp;Swap</th>
+						<th rowspan="2">データセット</th>
+						<th colspan="6">データ数</th>
+					</tr>
+					<tr>
+						<th align="right">1000</th><th align="right">5000</th><th align="right">10000</th><th align="right">30000</th><th align="right">50000</th><th align="right">100000</th>
+					</tr>
+					<tr>
+						<td rowspan="6" >交換ソート</td>
+						<td rowspan="3">比較回数</td>
+						<td>Random</td>
+						<td align="right">499500</td><td align="right">12497500</td><td align="right">49995000</td><td align="right">449985000</td><td align="right">2149975000</td><td align="right">4999950000</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">499500</td><td align="right">12497500</td><td align="right">49995000</td><td align="right">449985000</td><td align="right">2149975000</td><td align="right">4999950000</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">499500</td><td align="right">12497500</td><td align="right">49995000</td><td align="right">449985000</td><td align="right">2149975000</td><td align="right">4999950000</td>
+					</tr>
+					<tr>
+						<td rowspan="3">交換回数</td>
+						<td>Random</td>
+						<td align="right">246988</td><td align="right">6251357</td><td align="right">25021558</td><td align="right">224834013</td><td align="right">627494998</td><td align="right">2493785437</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">499500</td><td align="right">12497500</td><td align="right">49995000</td><td align="right">449985000</td><td align="right">2149975000</td><td align="right">4999950000</td>
+					</tr>
+					<tr>
+						<td rowspan="6">選択ソート</td>
+						<td rowspan="3">比較回数</td>
+						<td>Random</td>
+						<td align="right">499500</td><td align="right">12497500</td><td align="right">49995000</td><td align="right">449985000</td><td align="right">2149975000</td><td align="right">4999950000</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">499500</td><td align="right">12497500</td><td align="right">49995000</td><td align="right">449985000</td><td align="right">2149975000</td><td align="right">4999950000</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">499500</td><td align="right">12497500</td><td align="right">49995000</td><td align="right">449985000</td><td align="right">2149975000</td><td align="right">4999950000</td>
+					</tr>
+					<tr>
+						<td rowspan="3">交換回数</td>
+						<td>Random</td>
+						<td align="right">999</td><td align="right">4999</td><td align="right">9999</td><td align="right">29999</td><td align="right">49999</td><td align="right">99999</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">999</td><td align="right">4999</td><td align="right">9999</td><td align="right">29999</td><td align="right">49999</td><td align="right">99999</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">999</td><td align="right">4999</td><td align="right">9999</td><td align="right">29999</td><td align="right">49999</td><td align="right">99999</td>
+					</tr>
+					<tr>
+						<td rowspan="6">挿入ソート</td>
+						<td rowspan="3">比較回数</td>
+						<td>Random</td><td align="right">247978</td><td align="right">6256349</td><td align="right">25031551</td><td align="right">224864006</td><td align="right">627544984</td><td align="right">2493885428</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">999</td><td align="right">4999</td><td align="right">9999</td><td align="right">29999</td><td align="right">49999</td><td align="right">99999</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">499500</td><td align="right">12497500</td><td align="right">49995000</td><td align="right">449985000</td><td align="right">2149975000</td><td align="right">4999950000</td>
+					</tr>
+					<tr>
+						<td rowspan="3">交換回数</td>
+						<td>Random</td>
+						<td align="right">246988</td><td align="right">6251357</td><td align="right">25021558</td><td align="right">224834013</td><td align="right">627494998</td><td align="right">2493785437</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">499500</td><td align="right">12497500</td><td align="right">49995000</td><td align="right">449985000</td><td align="right">2149975000</td><td align="right">4999950000</td>
+					</tr>
+					<tr>
+						<td rowspan="6">シェルソート</td>
+						<td rowspan="3">比較回数</td>
+						<td>Random</td>
+						<td align="right">15085</td><td align="right">116630</td><td align="right">261110</td><td align="right">950697</td><td align="right">1901556</td><td align="right">4314460</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">48006</td><td align="right">55005</td><td align="right">120005</td><td align="right">390007</td><td align="right">700006</td><td align="right">1500006</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">11716</td><td align="right">78798</td><td align="right">172578</td><td align="right">567016</td><td align="right">1047305</td><td align="right">2244585</td>
+					</tr>
+					<tr>
+						<td rowspan="3">交換回数</td>
+						<td>Random</td>
+						<td align="right">7581</td><td align="right">64198</td><td align="right">146218</td><td align="right">576048</td><td align="right">1227172</td><td align="right">1864708</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">4700</td><td align="right">28780</td><td align="right">62560</td><td align="right">206992</td><td align="right">397280</td><td align="right">844560</td>
+					</tr>
+					<tr>
+						<td rowspan="6">クイックソート</td>
+						<td rowspan="3">比較回数</td>
+						<td>Random</td>
+						<td align="right">12698</td><td align="right">74460</td><td align="right">162192</td><td align="right">565292</td><td align="right">965179</td><td align="right">2008055</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">9009</td><td align="right">57726</td><td align="right">125439</td><td align="right">420014</td><td align="right">750015</td><td align="right">1600016</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">9016</td><td align="right">57738</td><td align="right">125452</td><td align="right">420026</td><td align="right">750028</td><td align="right">1600030</td>
+					</tr>
+					<tr>
+						<td rowspan="3">交換回数</td>
+						<td>Random</td>
+						<td align="right">2700</td><td align="right">16310</td><td align="right">34660</td><td align="right">114580</td><td align="right">200178</td><td align="right">427349</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">511</td><td align="right">2952</td><td align="right">5904</td><td align="right">16383</td><td align="right">32767</td><td align="right">65535</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">1010</td><td align="right">5452</td><td align="right">10904</td><td align="right">31382</td><td align="right">57766</td><td align="right">115534</td>
+					</tr>
+					<tr>
+						<td rowspan="6">マージソート</td>
+						<td rowspan="3">比較回数</td>
+						<td>Random</td>
+						<td align="right">8689</td><td align="right">55215</td><td align="right">120469</td><td align="right">408577</td><td align="right">718070</td><td align="right">1536525</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">5044</td><td align="right">32004</td><td align="right">69008</td><td align="right">227728</td><td align="right">401952</td><td align="right">853904</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">4932</td><td align="right">29804</td><td align="right">64608</td><td align="right">219504</td><td align="right">382512</td><td align="right">815024</td>
+					</tr>
+					<tr>
+						<td rowspan="3">交換回数</td>
+						<td>Random</td>
+						<td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td>
+					</tr>
+					<tr>
+						<td rowspan="6">ヒープソート</td>
+						<td rowspan="3">比較回数</td>
+						<td>Random</td>
+						<td align="right">16835</td><td align="right">107716</td><td align="right">235381</td><td align="right">800925</td><td align="right">1409503</td><td align="right">3019842</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">17583</td><td align="right">112126</td><td align="right">244460</td><td align="right">826347</td><td align="right">1455438</td><td align="right">3112517</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">15965</td><td align="right">103227</td><td align="right">226682</td><td align="right">775687</td><td align="right">1366047</td><td align="right">2926640</td>
+					</tr>
+					<tr>
+						<td rowspan="3">交換回数</td>
+						<td>Random</td>
+						<td align="right">9068</td><td align="right">57101</td><td align="right">124216</td><td align="right">420134</td><td align="right">737162</td><td align="right">1575145</td>
+					</tr>
+					<tr>
+						<td>Ascending</td>
+						<td align="right">9708</td><td align="right">60932</td><td align="right">131956</td><td align="right">440100</td><td align="right">773304</td><td align="right">2651854</td>
+					</tr>
+					<tr>
+						<td>Descending</td>
+						<td align="right">8316</td><td align="right">53436</td><td align="right">116696</td><td align="right">399212</td><td align="right">698892</td><td align="right">1497434</td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				※Randomの値は3回実行した平均値を表示している
+			</div>
+		</div>
+		<div class="footer">
+			<div><a href="consideration.html">考察</a></div>
+			<div><a href="../../">Top</a></div>
+			<p>(C) 2017 Naoki Fujisawa</p>
+		</div>
+	</body>
+</html>
