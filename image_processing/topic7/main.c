@@ -8,7 +8,7 @@ struct RGBColor NTSCWeightedAverage(struct RGBColor *rgb) {
 	return set;
 }
 
-void AlphaBrending(struct ppmimg *base, struct ppmimg *brend struct ppmimg *alpha) {
+void AlphaBrending(struct ppmimg *base, struct ppmimg *brend, struct ppmimg *alpha) {
 	struct ppmimg *save = NULL;
 	save = makeimagestruct(save);
 	save = createppmimage(save, (int)((double)brend->iwidth), (int)((double)brend->iheight), brend->cmode);
@@ -36,7 +36,7 @@ void AlphaBrending(struct ppmimg *base, struct ppmimg *brend struct ppmimg *alph
 
 }
 
-void main(void) {
+int main(void) {
 	//アルファブレンディング
 	struct ppmimg *base = NULL, *brend = NULL , *alpha;
 	base = makeimagestruct(base);
@@ -45,9 +45,9 @@ void main(void) {
 
 	loadppmimage("base.ppm", base);
 	loadppmimage("brend.ppm", brend);
-  loadppmimage("alpha.pgm", alpha)
+  loadppmimage("alpha.pgm", alpha);
 
-	AlphaBrending(base, brend);
+	AlphaBrending(base, brend, alpha);
 
 	deleteppmimg(base);
 	deleteppmimg(brend);
