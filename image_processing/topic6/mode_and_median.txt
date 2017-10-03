@@ -1,0 +1,2 @@
+Median : 109
+Mode : 47
