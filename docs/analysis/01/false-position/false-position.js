@@ -1,25 +1,30 @@
+// 解答を出力するブロックを取得
+var ansForm = document.getElementById('ans-field');
+
 /**
  * はさみうち法
- * @param  {Number} low  下限
- * @param  {Number} high 上限
- * @param  {Number} ep 許容誤差
+ * @param  {Number}   low  下限
+ * @param  {Number}   high 上限
+ * @param  {Number}   ep   許容誤差
  * @param  {x = f(x)} func 関数
- * @return {Number}
+ * @return {Number}        解
  */
 function falsePosition (low, high, ep, func) {
   var fa = func(low);
-  var fa = func(high);
+  var fb = func(high);
 
   var x;
   var count = 0;
-  var ansForm = document.getElementById('ans-false-position');
+
+  ansForm.innerHTML += '<p>';
   while (true) {
     x = (low * func (high) - high * func (low)) / (func (high) -func (low));
     // 途中経過を出力
-    ansForm.innerHTML += '<p>' + ("00" + count).slice(-3) + " : " + high.toFixed(10) + ", " + low.toFixed(10) + ", " + x.toFixed(10) + '</p>';
+    ansForm.innerHTML += ("00" + count).slice(-3) + " : " + high.toFixed(10) + ", " + low.toFixed(10) + ", " + x.toFixed(10) + '</br>';
 
     var fx = func (x);
     if (Math.abs(fx) < ep) {
+      ansForm.innerHTML += '</p>';
       break;
     }
 
@@ -41,7 +46,6 @@ function main () {
   var high = Number(document.getElementById('high').value);
   var low = Number(document.getElementById('low').value);
   var eps = Number(document.getElementById('eps').value);
-  var ansForm = document.getElementById('ans-false-position');
 
   ansForm.innerHTML = "";
 
