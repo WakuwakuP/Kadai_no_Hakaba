@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css">
 
-  <title>False Position Method</title>
+  <title>Newton Method</title>
 </head>
   <body class="bg-faded">
     <div class="">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="display-1 text-center">はさみうち法</h1>
+          <h1 class="display-1 text-center">ニュートン法</h1>
         </div>
       </div>
     </div>
@@ -25,26 +25,26 @@
         <div class="col-md-12">
           <table>
             <tr>
-              <td>high</td>
-              <td><textarea name="high" id="high" cols="30" rows="1">1</textarea></td>
-            </tr>
-            <tr>
-              <td>low</td>
-              <td><textarea name="low" id="low" cols="30" rows="1">0</textarea></td>
+              <td>初期値</td>
+              <td><input name="x_0" id="x_0" value="1" /></td>
             </tr>
             <tr>
               <td>eps</td>
-              <td><textarea name="eps" id="eps" cols="30" rows="1">0.000000001</textarea></td>
+              <td><input name="eps" id="eps" value="0.000000001" /></td>
             </tr>
             <tr>
               <td>f(x)</td>
-              <td><textarea name="fx" id="fx" cols="30" rows="1">x * x * x + x - 1</textarea></td>
+              <td><input name="fx" id="fx" value="x * x * x + x - 1" /></td>
+            </tr>
+            <tr>
+              <td>df(x)</td>
+              <td><input name="dfx" id="dfx" value="3 * x * x + 1" /></td>
             </tr>
           </table>
           <div>
             <h3>解</h3>
             <button type="button" onclick="main();">求める</button>
-            <div id="ans-false-position">
+            <div id="ans-field">
 
             </div>
           </div>
