@@ -39,7 +39,7 @@ function falsePosition (low, high, ep, func) {
     count++ ;
   }
 
-  console.log(count + '回 : ' + x);
+  console.log(count + '回 : ' + x + ' (' + ep + ')');
 
   return x;
 }

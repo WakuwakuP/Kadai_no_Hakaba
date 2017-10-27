@@ -25,7 +25,7 @@ function newton (x_0, ep, func, func_d) {
     x_0 = x_1;
   }
 
-  console.log(count + '回 : ' + x_0);
+  console.log(count + '回 : ' + x_0 + ' (' + ep + ')');
 
   return x_0;
 }
