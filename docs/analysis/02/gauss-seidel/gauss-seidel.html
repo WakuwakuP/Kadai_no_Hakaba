@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="https://pingendo.github.io/templates/blank/theme.css" type="text/css">
+
+  <title>Gauss Seidel Method</title>
+</head>
+  <body class="bg-faded">
+    <div class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="display-1 text-center">ガウス・ザイデル法</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <table>
+            <tr>
+              <td>1: </td>
+              <td><input name="x_1" id="x_1" value="3" size="2" /></td>
+              <td>x + </td>
+              <td><input name="y_1" id="y_1" value="1" size="2" /></td>
+              <td>y + </td>
+              <td><input name="z_1" id="z_1" value="1" size="2" /></td>
+              <td> = </td>
+              <td><input name="ans_1" id="ans_1" value="10" size="2" /></td>
+            </tr>
+            <tr>
+              <td>2: </td>
+              <td><input name="x_2" id="x_2" value="1" size="2" /></td>
+              <td>x + </td>
+              <td><input name="y_2" id="y_2" value="5" size="2" /></td>
+              <td>y + </td>
+              <td><input name="z_2" id="z_2" value="2" size="2" /></td>
+              <td> = </td>
+              <td><input name="ans_2" id="ans_2" value="21" size="2" /></td>
+            </tr>
+            <tr>
+              <td>3: </td>
+              <td><input name="x_3" id="x_3" value="1" size="2" /></td>
+              <td>x + </td>
+              <td><input name="y_3" id="y_3" value="2" size="2" /></td>
+              <td>y + </td>
+              <td><input name="z_3" id="z_3" value="5" size="2" /></td>
+              <td> = </td>
+              <td><input name="ans_3" id="ans_3" value="30" size="2" /></td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td>eps</td>
+              <td><input name="eps", id="eps" value="0.000000000000001" /></td>
+            </tr>
+            <tr>
+              <td>loop</td>
+              <td><input name="loop", id="loop" value="50" /></td>
+            </tr>
+          </table>
+          <div>
+            <h3>解</h3>
+            <button type="button" onclick="main();">求める</button>
+            <div id="ans-field">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-faded">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="text-center">
+            <a href="https://www.wakuwakup.net">www.wakuwakup.net</a>
+          </div>
+          <p class="text-center">© 2017 Naoki Fujisawa</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+  <script src="https://pingendo.com/assets/bootstrap/bootstrap-4.0.0-alpha.6.min.js"></script>
+  <script type="text/javascript" src="gauss-seidel.js"></script>
+</body>
+</html>
