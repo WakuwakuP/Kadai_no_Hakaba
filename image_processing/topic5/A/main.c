@@ -1,6 +1,5 @@
 #include <ppmload/ppmload.h>
 #include <time.h>
-//ppmload.h ppm処理ライブラリのインクルード
 
 #define SCALE_X1 0.33
 #define SCALE_Y1 0.33
@@ -20,18 +19,13 @@ int main(void){
 	nearest2 = makeimagestruct(nearest2);
 	liner1 = makeimagestruct(liner1);
   liner2 = makeimagestruct(liner2);
-	//生成画像へのポインタ = makeimagestruct(画像へのポインタ)
-	//画像の本体を取得する → 画像へのポインタを返す
-	//空の画像がこれでできる
 
 	loadppmimage("Default.ppm", img);
-	//ファイル名から、画像を読み込む(画像情報が読み込まれる)
 
   nearest1 = createppmimage(nearest1, img->iwidth*SCALE_X1, img->iheight*SCALE_Y1, img->cmode);
   nearest2 = createppmimage(nearest2, img->iwidth*SCALE_X2, img->iheight*SCALE_Y2, img->cmode);
   liner1 = createppmimage(liner1, img->iwidth*SCALE_X1, img->iheight*SCALE_Y1, img->cmode);
   liner2 = createppmimage(liner2, img->iwidth*SCALE_X2, img->iheight*SCALE_Y2, img->cmode);
-	//imageに手動で、空の画像を生成
 
   Nearest(img, nearest1, SCALE_X1, SCALE_Y1);
 	saveppmimage(nearest1, "Nearset Neighbor/nearest1.ppm");
@@ -42,7 +36,6 @@ int main(void){
   Linear(img, liner2, SCALE_X2, SCALE_Y2);
 	saveppmimage(liner2, "Linear Interpolation/liner2.ppm");
 
-	//画像の消去(後片付け)
 	deleteppmimg(img);
 	deleteppmimg(nearest1);
   deleteppmimg(nearest2);
@@ -55,7 +48,6 @@ int main(void){
 void Nearest(struct ppmimg *src, struct ppmimg *dst, double scalex, double scaley) {
   int i, j;
   clock_t start, stop;
-
 
   start = clock();
   for (j = 0; j < dst->iheight-1; j++) {

@@ -14,15 +14,44 @@ void LaplacianFilter(struct ppmimg *image, char *imagename, int bias);
 void MaxMinFilter(struct ppmimg *image, char *imagename);
 
 // ソート用関数
-int cmp( const void *p, const void *q );
-
 int cmp( const void *p, const void *q ) {
     return *(int*)p - *(int*)q;
 }
 
-//ランク値フィルタ
-void LankvalFilter(struct ppmimg *image, char *imagename, int lank)
-{
+int main(void) {
+
+	struct ppmimg *test = NULL, *mediantest = NULL;
+
+	test = makeimagestruct(test);
+	mediantest = makeimagestruct(mediantest);
+
+	loadppmimage("filtertest.pgm", test);
+	loadppmimage("medianfiltertest.pgm", mediantest);
+
+	for (int i = 1; i <= 9; i++) {
+		char imagename[20] = "Lank";
+		imagename[4] = '\0';
+		char number[2] = "0";
+		number[0] += i;
+		char *tmp = "_Filter.pgm";
+		strcat(imagename, number);
+		strcat(imagename, tmp);
+		LankvalFilter(test, imagename , i);
+	}
+
+	MedianFilter(mediantest, "MedianFilter.pgm");
+	ModeFilter(test, "ModeFilter.pgm");
+	GaussianFilter(test, "GaussianFilter.pgm", 0);
+	SharpFilter(test, "SharpFilter.pgm", 0);
+	BilateralFilter(test, "BiliateralFilter.pgm", 1.0, 1.0, 0);
+	LaplacianFilter(test, "LaplacianFilter.pgm", 0);
+	MaxMinFilter(test, "MaxMinFilter.pgm");
+
+	deleteppmimg(test);
+	deleteppmimg(mediantest);
+}
+
+void LankvalFilter (struct ppmimg *image, char *imagename, int lank) {
 	//1 <= lank <= 9 となるように調整
 	if (lank > 9) lank = 9;
 	else if (lank < 1) lank = 1;
@@ -57,15 +86,11 @@ void LankvalFilter(struct ppmimg *image, char *imagename, int lank)
 
 }
 
-//メディアンフィルタ
-void MedianFilter(struct ppmimg *image, char *imagename)
-{
+void MedianFilter (struct ppmimg *image, char *imagename) {
 	LankvalFilter(image, imagename, 5);
 }
 
-//最頻値フィルタ
-void ModeFilter(struct ppmimg *image, char *imagename)
-{
+void ModeFilter (struct ppmimg *image, char *imagename) {
 	struct ppmimg *save = NULL;
 	save = makeimagestruct(save);
 	save = cloneppmimage(image, save);
@@ -113,8 +138,7 @@ void ModeFilter(struct ppmimg *image, char *imagename)
 
 }
 
-//線形フィルタ
-void LinearFilter(struct ppmimg *image, char *imagename, double filter[3][3], int bias) {
+void LinearFilter (struct ppmimg *image, char *imagename, double filter[3][3], int bias) {
 	struct ppmimg *save = NULL;
 	save = makeimagestruct(save);
 	save = cloneppmimage(image, save);
@@ -153,8 +177,7 @@ void LinearFilter(struct ppmimg *image, char *imagename, double filter[3][3], in
 	deleteppmimg(save);
 }
 
-//ガウシアンフィルタ
-void GaussianFilter(struct ppmimg *image, char *imagename, int bias) {
+void GaussianFilter (struct ppmimg *image, char *imagename, int bias) {
 
 	double filter[3][3] = {
 		{ 1.0 / 16.0, 2.0 / 16.0 , 1.0 / 16.0 },
@@ -165,7 +188,6 @@ void GaussianFilter(struct ppmimg *image, char *imagename, int bias) {
 	LinearFilter(image, imagename, filter, bias);
 }
 
-//鮮鋭化フィルタ
 void SharpFilter(struct ppmimg *image, char *imagename, int bias) {
 
 	double filter[3][3] = {
@@ -178,8 +200,7 @@ void SharpFilter(struct ppmimg *image, char *imagename, int bias) {
 
 }
 
-//バイリテラルフィルタ
-void BilateralFilter(struct ppmimg *image, char *imagename, double sigma, double brightdiff, int bias) {
+void BilateralFilter (struct ppmimg *image, char *imagename, double sigma, double brightdiff, int bias) {
 	struct ppmimg *save = NULL;
 	save = makeimagestruct(save);
 	save = cloneppmimage(image, save);
@@ -224,7 +245,7 @@ void BilateralFilter(struct ppmimg *image, char *imagename, double sigma, double
 }
 
 //ラプラシアンフィルタ
-void LaplacianFilter(struct ppmimg *image, char *imagename, int bias) {
+void LaplacianFilter (struct ppmimg *image, char *imagename, int bias) {
 	double filter[3][3] = {
 		{ 1,  1, 1 },
 		{ 1, -8, 1 },
@@ -235,7 +256,7 @@ void LaplacianFilter(struct ppmimg *image, char *imagename, int bias) {
 }
 
 //Max-Minフィルタ
-void MaxMinFilter(struct ppmimg *image, char *imagename) {
+void MaxMinFilter (struct ppmimg *image, char *imagename) {
 	struct ppmimg *save = NULL;
 	save = makeimagestruct(save);
 	save = cloneppmimage(image, save);
@@ -265,37 +286,4 @@ void MaxMinFilter(struct ppmimg *image, char *imagename) {
 
 	saveppmimage(save, imagename);
 	deleteppmimg(save);
-}
-
-int main(void) {
-
-	struct ppmimg *test = NULL, *mediantest = NULL;
-
-	test = makeimagestruct(test);
-	mediantest = makeimagestruct(mediantest);
-
-	loadppmimage("filtertest.pgm", test);
-	loadppmimage("medianfiltertest.pgm", mediantest);
-
-	for (int i = 1; i <= 9; i++) {
-		char imagename[20] = "Lank";
-		imagename[4] = '\0';
-		char number[2] = "0";
-		number[0] += i;
-		char *tmp = "_Filter.pgm";
-		strcat(imagename, number);
-		strcat(imagename, tmp);
-		LankvalFilter(test, imagename , i);
-	}
-
-	MedianFilter(mediantest, "MedianFilter.pgm");
-	ModeFilter(test, "ModeFilter.pgm");
-	GaussianFilter(test, "GaussianFilter.pgm", 0);
-	SharpFilter(test, "SharpFilter.pgm", 0);
-	BilateralFilter(test, "BiliateralFilter.pgm", 1.0, 1.0, 0);
-	LaplacianFilter(test, "LaplacianFilter.pgm", 0);
-	MaxMinFilter(test, "MaxMinFilter.pgm");
-
-	deleteppmimg(test);
-	deleteppmimg(mediantest);
 }

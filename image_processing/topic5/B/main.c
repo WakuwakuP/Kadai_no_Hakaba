@@ -22,22 +22,15 @@ int main(void){
 
 	img1 = makeimagestruct(img1);
 	img2 = makeimagestruct(img2);
-	//生成画像へのポインタ = makeimagestruct(画像へのポインタ)
-	//画像の本体を取得する → 画像へのポインタを返す
-	//空の画像がこれでできる
 
 	loadppmimage("Default.ppm", img1);
-	//ファイル名から、画像を読み込む(画像情報が読み込まれる)
 
   img2 = createppmimage(img2, img1->iwidth*scalX, img1->iheight*scalY, img1->cmode);
-	//image3に手動で、空の画像を生成
 
   Affine(img1, img2, scalX, scalY, moveX, moveY, -ang);
 
-	//名前を付けて画像をセーブする関数
 	saveppmimage(img2, "result.ppm");
 
-	//画像の消去(後片付け)
 	deleteppmimg(img1);
 	deleteppmimg(img2);
 }

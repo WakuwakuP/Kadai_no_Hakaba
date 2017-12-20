@@ -18,9 +18,7 @@ int Max(int a, int b, int c);
 
 int main(int argc, char const *argv[]) {
 	struct ppmimg *img1=NULL,*img2=NULL,*img3=NULL,*img4=NULL,*img5=NULL,*img6=NULL,*img7=NULL;
-	//struct ppmimg <= 画像を表す構造体
-	//struct ppmimg *image1 = NULL ポインタだけ作る(NULLで初期化)
-
+	
 	img1 = makeimagestruct(img1);
 	img2 = makeimagestruct(img2);
 	img3 = makeimagestruct(img3);
@@ -28,12 +26,8 @@ int main(int argc, char const *argv[]) {
   img5 = makeimagestruct(img5);
   img6 = makeimagestruct(img6);
   img7 = makeimagestruct(img7);
-	//生成画像へのポインタ = makeimagestruct(画像へのポインタ)
-	//画像の本体を取得する → 画像へのポインタを返す
-	//空の画像がこれでできる
 
 	loadppmimage("Default.ppm", img1);
-	//ファイル名から、画像を読み込む(画像情報が読み込まれる)
 
   img2 = createppmimage(img2, img1->iwidth, img1->iheight, 1);
   img3 = createppmimage(img3, img1->iwidth, img1->iheight, 1);
@@ -41,8 +35,6 @@ int main(int argc, char const *argv[]) {
   img5 = createppmimage(img5, img1->iwidth, img1->iheight, 1);
   img6 = createppmimage(img6, img1->iwidth, img1->iheight, 1);
   img7 = createppmimage(img7, img1->iwidth, img1->iheight, 1);
-  //読み込んだimage1と同じプロパティの画像を生成
-  //プロパティ=サイズ、色数、PN => 色は全部ない
 
   cvtGray(img1, img2, 0);
   cvtGray(img1, img3, 1);
@@ -51,7 +43,6 @@ int main(int argc, char const *argv[]) {
   cvtGray(img1, img6, 4);
   GradConvers(img6, img7, BASE);
 
-	//名前を付けて画像をセーブする関数
 	saveppmimage(img2, "1.pgm");
 	saveppmimage(img3, "2.pgm");
 	saveppmimage(img4, "3.pgm");
@@ -59,7 +50,6 @@ int main(int argc, char const *argv[]) {
   saveppmimage(img6, "5.pgm");
   saveppmimage(img7, "6.pgm");
 
-	//画像の消去(後片付け)
 	deleteppmimg(img1);
 	deleteppmimg(img2);
 	deleteppmimg(img3);

@@ -11,7 +11,75 @@ void setppmGrayDens(struct RGBColor *set, unsigned char dens);
 void RandomDither(struct ppmimg *image, char *imagename);
 void makeAsciiArt(struct ppmimg *image, char *aaname, int threshold);
 
-//画像を複製する関数
+
+int main(void) {
+
+	int bayer[16] =
+	{
+		0, 8, 2,10,
+		12, 4,14, 6,
+		3,11, 1, 9,
+		15, 7,13, 5
+	};
+
+	int halftone[16] = {
+		10, 4, 6, 8,
+		12, 0, 2,14,
+		7, 9,11, 5,
+		3,15,13, 1
+	};
+
+	int screw[16] = {
+		13, 7, 6,12,
+		8, 1, 0, 5,
+		9, 2 ,3, 4,
+		14,10,11,15
+
+	};
+
+	int screwDefor[16] = {
+		15, 4, 8, 2,
+		11, 0, 1, 5,
+		7, 3, 2, 9,
+		14,10, 6,13
+	};
+
+	int mediumEmp[16] = {
+		12, 4, 8, 14,
+		11, 0, 2,  6,
+		7, 3, 1, 10,
+		15, 9, 5, 13
+	};
+
+	int dotConcent[16] = {
+		13, 4, 8, 14,
+		10, 0, 1,  7,
+		6, 3, 2, 11,
+		15, 9 ,5, 13
+	};
+
+	struct ppmimg *image = NULL;
+
+	image = makeimagestruct(image);
+	loadppmimage("Default.ppm", image);
+
+	Pixelize(image, 8, 200, 60, 400, 333);
+	Pixelize(image, 16, 200, 60, 400, 333);
+	FixedThreshold(image, "FixedThreshold.ppm", 128);
+	FourFourDither(image, bayer, "bayer.ppm");
+	FourFourDither(image, halftone, "halftone.ppm");
+	FourFourDither(image, screw, "screw.ppm");
+	FourFourDither(image, screwDefor, "screwDefor.ppm");
+	FourFourDither(image, mediumEmp, "mediumEmp.ppm");
+	FourFourDither(image, dotConcent, "dotConcent.ppm");
+	ErrorDiffusion(image, "ErrorDiffusion.ppm");
+	RandomDither(image, "RandomDither.ppm");
+
+	deleteppmimg(image);
+
+	return 0;
+}
+
 void copyImage(struct ppmimg *base, struct ppmimg *copy) {
 
 	copy = cloneppmimage(base, copy);
@@ -261,72 +329,4 @@ void makeAsciiArt(struct ppmimg *image, char *aaname, int threshold) {
 	}
 
 	fclose(aa);
-}
-
-int main(void) {
-
-	int bayer[16] =
-	{
-		0, 8, 2,10,
-		12, 4,14, 6,
-		3,11, 1, 9,
-		15, 7,13, 5
-	};
-
-	int halftone[16] = {
-		10, 4, 6, 8,
-		12, 0, 2,14,
-		7, 9,11, 5,
-		3,15,13, 1
-	};
-
-	int screw[16] = {
-		13, 7, 6,12,
-		8, 1, 0, 5,
-		9, 2 ,3, 4,
-		14,10,11,15
-
-	};
-
-	int screwDefor[16] = {
-		15, 4, 8, 2,
-		11, 0, 1, 5,
-		7, 3, 2, 9,
-		14,10, 6,13
-	};
-
-	int mediumEmp[16] = {
-		12, 4, 8, 14,
-		11, 0, 2,  6,
-		7, 3, 1, 10,
-		15, 9, 5, 13
-	};
-
-	int dotConcent[16] = {
-		13, 4, 8, 14,
-		10, 0, 1,  7,
-		6, 3, 2, 11,
-		15, 9 ,5, 13
-	};
-
-	struct ppmimg *image = NULL;
-
-	image = makeimagestruct(image);
-	loadppmimage("Default.ppm", image);
-
-	Pixelize(image, 8, 200, 60, 400, 333);
-	Pixelize(image, 16, 200, 60, 400, 333);
-	FixedThreshold(image, "FixedThreshold.ppm", 128);
-	FourFourDither(image, bayer, "bayer.ppm");
-	FourFourDither(image, halftone, "halftone.ppm");
-	FourFourDither(image, screw, "screw.ppm");
-	FourFourDither(image, screwDefor, "screwDefor.ppm");
-	FourFourDither(image, mediumEmp, "mediumEmp.ppm");
-	FourFourDither(image, dotConcent, "dotConcent.ppm");
-	ErrorDiffusion(image, "ErrorDiffusion.ppm");
-	RandomDither(image, "RandomDither.ppm");
-
-	deleteppmimg(image);
-
-	return 0;
 }

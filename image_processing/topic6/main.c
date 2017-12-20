@@ -1,7 +1,6 @@
 #include <ppmload/ppmload.h>
 #include <stdlib.h>
 
-
 int getMedian(int cnt[],int w,int h);
 int getMode(int cnt[]);
 void frattening(struct ppmimg *image, int cnt[]);
@@ -17,13 +16,11 @@ int main(void) {
 
 	int w,h,a;
 
-	// 初期設定
 	image = makeimagestruct(image);
 	loadppmimage("Default.pgm", image);
 	hist = fopen("hist.csv", "w");
 	other = fopen("mode_and_median.txt", "w");
 
-	// 配列に格納
 	struct RGBColor getPixel = getPnmPixel(image,1,1);
 	for (w = 0; w < image->iwidth; w++) {
 		for (h = 0; h < image->iheight; h++) {
@@ -32,7 +29,6 @@ int main(void) {
 		}
 	}
 
-	// 変数に渡す
 	median = getMedian(dens, image->iwidth, image->iheight);
 	mode = getMode(dens);
 	LinedensConv(image, dens);
@@ -102,7 +98,6 @@ void LinedensConv(struct ppmimg *base, int cnt[]) {
 				}
 		}
 
-		// z_m, a, b を用意する
 		int z_m = 255;
 		int a = min;
 		int b = max;
@@ -112,9 +107,8 @@ void LinedensConv(struct ppmimg *base, int cnt[]) {
 				for (int x = 0; x < base->iwidth; x++) {
 					struct RGBColor getPixel = getPnmPixel(base, x, y);
 					struct RGBColor setPixel;
-
-					// 計算する
 					int z = getPixel.dens;
+
 					if (0 <= z && z < a) {
 							setPixel.dens = 0;
 					}else if (a <= z && z <= b) {
@@ -124,7 +118,6 @@ void LinedensConv(struct ppmimg *base, int cnt[]) {
 							setPixel.dens = z_m;
 					}
 
-					// 記録する
 					setPnmPixel(image, x, y, setPixel);
 					dens[setPixel.dens]++;
 				}
