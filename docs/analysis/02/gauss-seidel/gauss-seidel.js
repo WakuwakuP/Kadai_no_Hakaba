@@ -34,7 +34,7 @@ function gaussSeidel(data, eps, loop) {
     }
     if (q < eps) {
       for (let i = 0; i < data.length; i++) {
-        ans += '<p>' + suffix + ' = ' + x[i] + '</p>';
+        ans += '<p>' + suffix[i] + ' = ' + x[i] + '</p>';
       }
       break;
     }
