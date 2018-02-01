@@ -3,7 +3,7 @@ var ansForm = document.getElementById('ans-field');
 
 /**
  * シンプソン法
- * @param  {Func}   data  関数
+ * @param  {Func}   func  関数
  * @param  {Number} n     分割数
  * @return {String}       解
  */

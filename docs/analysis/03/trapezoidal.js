@@ -3,7 +3,7 @@ var ansForm = document.getElementById('ans-field');
 
 /**
  * 台形法
- * @param  {Function} Func  関数
+ * @param  {Function} func  関数
  * @param  {Number}   n     許容誤差
  * @return {String}         解
  */
