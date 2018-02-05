@@ -1,10 +1,10 @@
-Node.prototype.prependChild = function(e){ this.insertBefore(e,this.firstChild); }
 const clock = new THREE.Clock();
 // シーンを生成
 const scene = new THREE.Scene();
 
 // フォグの設定
-scene.fog = new THREE.FogExp2(0xEEEEEE, 0.001);
+//scene.fog = new THREE.FogExp2(0xEEEEEE, 0.001);
+scene.fog = new THREE.FogExp2(0xfac9f9, 0.001);
 
 // カメラを生成
 const width = window.innerWidth;
@@ -19,7 +19,7 @@ camera.position.set(0,0,800);
 
 // パーティクル設定
 const particleCount = 400;
-const geometry = new THREE.CubeGeometry(20, 10, 20);
+const geometry = new THREE.CubeGeometry(30, 15, 30);
 geometry.vertices[0].x*=0.65;
 geometry.vertices[0].z*=0.65;
 geometry.vertices[1].x*=0.65;
@@ -47,8 +47,8 @@ for (let i = 0; i < particleCount; i++) {
 // レンダラを追加
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(width, height);
-renderer.setClearColor( 0xffffff );
-document.body.prependChild(renderer.domElement);
+renderer.setClearColor( 0xfac9f9 );
+document.body.appendChild(renderer.domElement);
 
 // 光源を追加
 const directionalLight = new THREE.DirectionalLight( 0xffffff );
@@ -68,12 +68,12 @@ scene.add(directionalLight);
       const mesh = meshs[Count];
       if (mesh.position.y < -600){
         mesh.position.set(Math.random() * 1000 -500, 500, Math.random() * 1000 -500);
-        mesh.userData.ySpeed = Math.random() / 2000 + 0.0001;
+        mesh.userData.ySpeed = Math.random() / 2000 + 0.0003;
         mesh.userData.rotateSpeed = (Math.random() * 100 - 50) / 3000;
         mesh.userData.velocity.set((Math.random() * 100 - 50) / 200 , - Math.random(), (Math.random() * 100 - 50) / 200);
       }
       mesh.userData.velocity.y -= Math.random() * mesh.userData.ySpeed;
-      mesh.rotation.set(mesh.rotation.y + mesh.userData.rotateSpeed, mesh.rotation.y + mesh.userData.rotateSpeed, mesh.rotation.z + mesh.userData.rotateSpeed)
+      mesh.rotation.set(mesh.rotation.y + mesh.userData.rotateSpeed, mesh.rotation.y + mesh.userData.rotateSpeed, mesh.rotation.z + mesh.userData.rotateSpeed);
       mesh.position.add(mesh.userData.velocity);
     }
 
