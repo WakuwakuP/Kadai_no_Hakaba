@@ -67,7 +67,7 @@ scene.add(directionalLight);
     while (Count--) {
       const mesh = meshs[Count];
       if (mesh.position.y < -600){
-        mesh.position.y = 500;
+        mesh.position.set(Math.random() * 1000 -500, 500, Math.random() * 1000 -500);
         mesh.userData.ySpeed = Math.random() / 2000 + 0.0001;
         mesh.userData.rotateSpeed = (Math.random() * 100 - 50) / 3000;
         mesh.userData.velocity.set((Math.random() * 100 - 50) / 200 , - Math.random(), (Math.random() * 100 - 50) / 200);
