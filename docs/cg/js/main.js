@@ -7,7 +7,6 @@ const clock = new THREE.Clock();
 const scene = new THREE.Scene();
 
 // フォグの設定
-//scene.fog = new THREE.FogExp2(0xEEEEEE, 0.001);
 scene.fog = new THREE.FogExp2(0xfac9f9, 0.001);
 
 // カメラを生成
@@ -38,12 +37,7 @@ const meshs = [];
 
 for (let i = 0; i < particleCount; i++) {
   let mesh = new THREE.Mesh(geometry, material);
-  mesh.position.set(Math.random() * 1000 -500, Math.random() * 1200 - 600, Math.random() * 1000 -500);
-  mesh.rotation.set(Math.random()* 360, Math.random()* 360, Math.random()* 360);
-
-  mesh.userData.ySpeed = Math.random() / 2000 + 0.0001;
-  mesh.userData.rotateSpeed = (Math.random() * 100 - 50) / 3000;
-  mesh.userData.velocity = new THREE.Vector3((Math.random() * 100 - 50) / 200 , - Math.random(), (Math.random() * 100 - 50) / 200);
+  meshInit (mesh);
   meshs.push(mesh);
   scene.add(meshs[i]);
 }
@@ -65,29 +59,47 @@ document.body.addEventListener("mousemove", function(e){
   mouseY = e.pageY;  //Y座標
 });
 
+function cameraRotateMouse () {
+  let cameraSpeed = (mouseX / width - 0.5) / 20;;
+  theta -= cameraSpeed;
+  camera.position.set (800 * Math.sin(theta / 10), 100, 800 * Math.cos(theta / 10));
+}
+
+function meshInit (mesh) {
+  mesh.position.set(Math.random() * 1000 -500, Math.random() * 1200 - 600, Math.random() * 1000 -500);
+  mesh.rotation.set(Math.random()* 360, Math.random()* 360, Math.random()* 360);
+  mesh.userData.ySpeed = Math.random() / 2000 + 0.0001;
+  mesh.userData.rotateSpeed = (Math.random() * 100 - 50) / 3000;
+  mesh.userData.velocity = new THREE.Vector3((Math.random() * 100 - 50) / 200 , - Math.random(), (Math.random() * 100 - 50) / 200);
+}
+
+function meshReset (mesh) {
+  mesh.position.set(Math.random() * 1000 -500, 500, Math.random() * 1000 -500);
+  mesh.userData.ySpeed = Math.random() / 2000 + 0.0003;
+  mesh.userData.rotateSpeed = (Math.random() * 100 - 50) / 3000;
+  mesh.userData.velocity.set((Math.random() * 100 - 50) / 200 , - Math.random(), (Math.random() * 100 - 50) / 200);
+}
+
+function meshAnimate (meshs) {
+  let Count = particleCount;
+  while (Count--) {
+    const mesh = meshs[Count];
+    if (mesh.position.y < -600){
+      meshReset (mesh);
+    }
+    mesh.userData.velocity.y -= Math.random() * mesh.userData.ySpeed;
+    mesh.rotation.set(mesh.rotation.y + mesh.userData.rotateSpeed, mesh.rotation.y + mesh.userData.rotateSpeed, mesh.rotation.z + mesh.userData.rotateSpeed);
+    mesh.position.add(mesh.userData.velocity);
+  }
+}
+
 (
   function animate () {
-    requestAnimationFrame(animate);
+    requestAnimationFrame (animate);  // フレーム更新する関数
 
     // ここにアニメーションを記述
-    let Count = particleCount;
-    let cameraSpeed = (mouseX / width - 0.5) / 20;
-    //theta = clock.getElapsedTime() * cameraSpeed;
-    theta -= cameraSpeed;
-    camera.position.set (800 * Math.sin(theta / 10), 100, 800 * Math.cos(theta / 10));
-
-    while (Count--) {
-      const mesh = meshs[Count];
-      if (mesh.position.y < -600){
-        mesh.position.set(Math.random() * 1000 -500, 500, Math.random() * 1000 -500);
-        mesh.userData.ySpeed = Math.random() / 2000 + 0.0003;
-        mesh.userData.rotateSpeed = (Math.random() * 100 - 50) / 3000;
-        mesh.userData.velocity.set((Math.random() * 100 - 50) / 200 , - Math.random(), (Math.random() * 100 - 50) / 200);
-      }
-      mesh.userData.velocity.y -= Math.random() * mesh.userData.ySpeed;
-      mesh.rotation.set(mesh.rotation.y + mesh.userData.rotateSpeed, mesh.rotation.y + mesh.userData.rotateSpeed, mesh.rotation.z + mesh.userData.rotateSpeed);
-      mesh.position.add(mesh.userData.velocity);
-    }
+    cameraRotateMouse ();
+    meshAnimate (meshs);
 
     // 描画
     camera.lookAt(scene.position);
