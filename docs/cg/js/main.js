@@ -49,7 +49,7 @@ for (let i = 0; i < particleCount; i++) {
 }
 
 // レンダラを追加
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(width, height);
 renderer.setClearColor( 0xfac9f9 );
 document.body.appendChild(renderer.domElement);
