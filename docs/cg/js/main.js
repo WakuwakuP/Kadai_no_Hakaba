@@ -1,3 +1,7 @@
+let mouseX = 0;
+let mouseY = 0;
+let theta = 0;
+
 const clock = new THREE.Clock();
 // シーンを生成
 const scene = new THREE.Scene();
@@ -55,14 +59,22 @@ const directionalLight = new THREE.DirectionalLight( 0xffffff );
 directionalLight.position.set(0, 1, 0);
 scene.add(directionalLight);
 
+document.body.addEventListener("mousemove", function(e){
+  //座標を取得する
+  mouseX = e.pageX;  //X座標
+  mouseY = e.pageY;  //Y座標
+});
+
 (
   function animate () {
     requestAnimationFrame(animate);
 
     // ここにアニメーションを記述
     let Count = particleCount;
-    let theta = clock.getElapsedTime();
-    //camera.position.set (800 * Math.sin(theta / 10), 100, 800 * Math.cos(theta / 10));
+    let cameraSpeed = (mouseX / width - 0.5) / 20;
+    //theta = clock.getElapsedTime() * cameraSpeed;
+    theta -= cameraSpeed;
+    camera.position.set (800 * Math.sin(theta / 10), 100, 800 * Math.cos(theta / 10));
 
     while (Count--) {
       const mesh = meshs[Count];
