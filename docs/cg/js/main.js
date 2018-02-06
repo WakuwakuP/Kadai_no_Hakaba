@@ -53,18 +53,28 @@ const directionalLight = new THREE.DirectionalLight( 0xffffff );
 directionalLight.position.set(0, 1, 0);
 scene.add(directionalLight);
 
+/**
+ * マウス座標を取得するイベント
+ */
 document.body.addEventListener("mousemove", function(e){
   //座標を取得する
   mouseX = e.pageX;  //X座標
   mouseY = e.pageY;  //Y座標
 });
 
+/**
+ * マウス位置によってカメラを動かす関数
+ */
 function cameraRotateMouse () {
   let cameraSpeed = (mouseX / width - 0.5) / 20;;
   theta -= cameraSpeed;
   camera.position.set (800 * Math.sin(theta / 10), 100, 800 * Math.cos(theta / 10));
 }
 
+/**
+ * メッシュの初期化をする関数
+ * @param  {mesh} mesh 個別のメッシュ情報
+ */
 function meshInit (mesh) {
   mesh.position.set(Math.random() * 1000 -500, Math.random() * 1200 - 600, Math.random() * 1000 -500);
   mesh.rotation.set(Math.random()* 360, Math.random()* 360, Math.random()* 360);
@@ -73,6 +83,10 @@ function meshInit (mesh) {
   mesh.userData.velocity = new THREE.Vector3((Math.random() * 100 - 50) / 200 , - Math.random(), (Math.random() * 100 - 50) / 200);
 }
 
+/**
+ * メッシュを再配置する関数
+ * @param {mesh} mesh 個別のメッシュ情報
+ */
 function meshReset (mesh) {
   mesh.position.set(Math.random() * 1000 -500, 500, Math.random() * 1000 -500);
   mesh.userData.ySpeed = Math.random() / 2000 + 0.0003;
@@ -80,6 +94,10 @@ function meshReset (mesh) {
   mesh.userData.velocity.set((Math.random() * 100 - 50) / 200 , - Math.random(), (Math.random() * 100 - 50) / 200);
 }
 
+/**
+ * メッシュをアニメーションさせる関数
+ * @param  {meshs[]} meshs 各メッシュをまとめた配列
+ */
 function meshAnimate (meshs) {
   let Count = particleCount;
   while (Count--) {
@@ -94,6 +112,9 @@ function meshAnimate (meshs) {
 }
 
 (
+  /**
+   * アニメーションさせる関数
+   */
   function animate () {
     requestAnimationFrame (animate);  // フレーム更新する関数
 
